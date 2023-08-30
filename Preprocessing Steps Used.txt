@@ -1,0 +1,52 @@
+df.head()
+df.shape
+df.info
+## Data Preprocessing
+df.isnull().sum()
+datatype=df.dtypes.unique()
+datatype
+# Initialize empty lists to store column names
+Num_columns = []
+Cat_columns = []
+
+# Iterate through the columns and categorize them
+for column in df.columns:
+    if df[column].dtype in ['int64', 'float64']:
+        Num_columns.append(column)
+    else:
+        Cat_columns.append(column)
+Num_columns
+Cat_columns
+df[Num_columns].isnull().sum()
+sns.heatmap(df[Num_columns].isnull())
+df['LotFrontage'].fillna(df['LotFrontage'].mean(),inplace=True)
+df['LotFrontage'].isnull().sum()
+df['GarageYrBlt'].fillna(df['GarageYrBlt'].mean(),inplace=True)
+df['GarageYrBlt'].isnull().sum()
+df['MasVnrArea'].fillna(df['MasVnrArea'].mean(),inplace=True)
+df['MasVnrArea'].isnull().sum()
+sns.heatmap(df[Num_columns].isnull())
+df[Cat_columns].isnull().sum()
+sns.heatmap(df[Cat_columns].isnull())
+df['GarageCond'].fillna(df['GarageCond'].mode()[0] , inplace=True)
+df['GarageFinish'].fillna(df['GarageFinish'].mode()[0],inplace=True)
+df['GarageQual'].fillna(df['GarageQual'].mode()[0],inplace=True)
+df['GarageCond'].fillna(df['GarageCond'].mode()[0],inplace=True)
+df['FireplaceQu'].fillna(df['FireplaceQu'].mode()[0],inplace=True)
+df['BsmtQual'].fillna(df['BsmtQual'].mode()[0],inplace=True)
+df['BsmtCond'].fillna(df['BsmtCond'].mode()[0],inplace=True)
+df['BsmtFinType1'].fillna(df['BsmtFinType1'].mode()[0],inplace=True)
+df['BsmtFinType2'].fillna(df['BsmtFinType2'].mode()[0],inplace=True)
+df['BsmtExposure'].fillna(df['BsmtExposure'].mode()[0],inplace=True)
+df['GarageType'].fillna(df['GarageType'].mode()[0],inplace=True)
+df['Electrical'].fillna(df['Electrical'].mode()[0],inplace=True)
+df[Cat_columns].isnull().sum()
+df.drop(['Alley','PoolQC','Fence','MiscFeature'], axis=1, inplace=True)
+sns.heatmap(df.isnull())
+columns_with_null=df.columns[df.isnull().any()]
+columns_with_null
+df['MasVnrType'].isnull().sum()
+df['MasVnrType'].fillna(df['MasVnrType'].mode()[0], inplace=True)
+columns_with_null=df.columns[df.isnull().any()]
+columns_with_null
+df.info() 
